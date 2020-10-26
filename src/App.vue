@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <Client/>
+    <Client :client="client"/>
     <br>
-    <Product :value="xiaomiMi9price"/>
+    
+    <div v-for="product in products" :key="product.id">
+      <Product :product="product"/>
+    </div>
   </div>
 </template>
 
@@ -12,15 +15,38 @@ import Product from './components/Product'
 
 export default {
   name: 'App',
-  data() {
-    return {
-      xiaomiMi9price: 2430.5
-    }
-  },
   components: {
     Client,
     Product,
-  }
+  },
+  data() {
+    return {
+      client: {
+        name: 'Lucas Jung',
+        profession: 'Estudante',
+      },
+      products: [
+      {
+        id: '748fasdf74821as',
+        price: 2400.5,
+        name: 'Celular',
+        description: 'Xiaomi MI9 - 8GB Ram | 124GB Armazenamento',
+      },
+        {
+          id: '99iu12899dh2q3h',
+          price: 3205,
+          name: 'Notebook',
+          description: 'Acer Aspire - 8GB Ram | 500GB Armazenamento',
+        },
+        {
+          id: '8uafs9uh0q9382l',
+          price: 40,
+          name: 'Pendrive',
+          description: 'Multilazer | 16GB Armazenamento',
+        },
+      ]
+    }
+  },
 }
 </script>
 

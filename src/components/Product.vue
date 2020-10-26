@@ -1,14 +1,15 @@
 <template>
-    <div>
-        <h3>{{ product }}</h3>
+    <div id="product">
+        <h3>{{ product.name }}</h3>
         <p>
-            {{ description }}
+            {{ product.description }}
             <br>
-            R${{ valor }}
+            R${{ product.price }}
         </p>
         <br>
-        Quantidade: <input type="number" v-model="ammount" id="ammount" placeholder="Quantidade">
-        <h2>Total a pagar: R${{ value * ammount }}</h2>
+        Quantidade: <input type="number" v-model="ammount" id="ammount">
+        <p v-if="ammount > 0">Total a pagar por esse produto: R${{ product.price * ammount }}</p>
+        <p v-else><br></p> <!-- Para evitar que os produtos subam e desçam conforme a quantidade é alterada -->
     </div>
 </template>
 
@@ -16,13 +17,11 @@
 export default {
     data() {
         return {
-            ammount: 0,
-            product: 'Celular',
-            description: 'Xiaomi MI9 - 8GB Ram | 124GB Armazenamento',
+            ammount: Number,
         }
     },
     props: {
-        value: Number,
+        product: Object,
     }
 }
 </script>
@@ -32,20 +31,8 @@ export default {
     text-align: center;  
     width: 50px;
 }
-::-webkit-input-placeholder {
-   color: #202020;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-   color: #202020;  
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-   color: #202020;  
-}
-
-:-ms-input-placeholder {  
-   color: #202020;  
+#product {
+    margin-bottom: 60px;       
 }
 
 </style>

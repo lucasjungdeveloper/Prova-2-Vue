@@ -1,21 +1,20 @@
 <template>
-    <div>
-        <h2>{{ name }}</h2>
-        <p>{{ descritpion }}</p>
+    <div id="client">
+        <h2>{{ client.name }}</h2>
+        <p>{{ client.profession }}</p>
     </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            name: 'Lucas Jung',
-            descritpion: 'Aluno de Sistemas de Informação'
-        }
-    }
+    props: {
+        client: Object,
+    },
 }
 </script>
 
 <style scoped>
-
+#client {
+    color: #ffc5ec;
+}
 </style>
